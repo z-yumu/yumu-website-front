@@ -1,0 +1,36 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "overrides": [
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "semi": ["error", "never"],
+        "quotes": ["error", "single"],
+        "no-var": 0,  // 禁用var，用let和const代替
+        "no-spaced-func": 2,//函数调用时 函数名与()之间不能有空格
+        "no-implicit-coercion": 1,//禁止隐式转换
+        "no-mixed-spaces-and-tabs": [2, false],//禁止混用tab和空格
+        "no-multi-spaces": 1,//不能用多余的空格
+        "no-multiple-empty-lines": [1, {"max": 2}],
+        "camelcase": [2, {"properties": "always"}],//强制驼峰法命名
+        "eqeqeq": 2,//必须使用全等
+        "indent": [2, 4] //缩进风格
+
+    }
+}

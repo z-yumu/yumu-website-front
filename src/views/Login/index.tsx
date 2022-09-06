@@ -4,19 +4,17 @@ import { LoginWrapper } from './css/LoginWrapper'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 
-
-interface IUser{
-    username:string,
-    password:string
+interface IUser {
+    username: string
+    password: string
 }
 
 const Login: FC = (): ReactElement => {
     const navigate = useNavigate()
     const [isModalVisible, setIsModalVisible] = useState(false)
-    const onFinish = (value:IUser) => {
-        // console.log(value,'value')
+    const onFinish = (value: IUser) => {
+        console.log(value, 'value')
         navigate('/')
-        
     }
     return (
         <LoginWrapper color="red">
@@ -69,7 +67,10 @@ const Login: FC = (): ReactElement => {
                             <Checkbox>Remember me</Checkbox>
                         </Form.Item>
 
-                        <span className="login-form-forgot"  onClick={()=>setIsModalVisible(true)}>
+                        <span
+                            className="login-form-forgot"
+                            onClick={() => setIsModalVisible(true)}
+                        >
                             Forgot password
                         </span>
                     </Form.Item>
@@ -86,8 +87,8 @@ const Login: FC = (): ReactElement => {
                 </Form>
                 <Modal
                     visible={isModalVisible}
-                    onOk={()=>setIsModalVisible(false)}
-                    onCancel={()=>setIsModalVisible(false)}
+                    onOk={() => setIsModalVisible(false)}
+                    onCancel={() => setIsModalVisible(false)}
                 >
                     <p>请女士添加管理员微信</p>
                     <p>男士勿扰!!!</p>
