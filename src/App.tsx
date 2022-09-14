@@ -3,14 +3,12 @@ import React, { FC } from 'react'
 // import { Button } from 'antd'
 import './App.css'
 
-import { Outlet } from 'react-router-dom'
 import LayoutCom from './components/layout/LayoutCom'
 
 const App: FC = () => {
     return (
         <div className="App">
             <LayoutCom />
-            <Outlet />
         </div>
     )
 }

@@ -6,27 +6,28 @@ import {
     VideoCameraOutlined,
 } from '@ant-design/icons'
 import { Layout, Menu } from 'antd'
+import { MenuInfo } from 'rc-menu/lib/interface'
 import React, { useState } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 const LayoutWrapper = styled.div`
-    .layout-box{
+    .layout-box {
         min-height: 100vh;
     }
 
-    #components-layout-demo-custom-trigger .trigger {
+    .trigger {
         padding: 0 24px;
         font-size: 18px;
         line-height: 64px;
         cursor: pointer;
         transition: color 0.3s;
+        &:hover {
+            color: #1890ff;
+        }
     }
 
-    #components-layout-demo-custom-trigger .trigger:hover {
-        color: #1890ff;
-    }
-
-    #components-layout-demo-custom-trigger .logo {
+    .logo {
         height: 32px;
         margin: 16px;
         background: rgba(255, 255, 255, 0.3);
@@ -41,6 +42,30 @@ const { Header, Sider, Content } = Layout
 
 const LayoutCom: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false)
+    const navigate = useNavigate()
+
+    const menuClick = (e: MenuInfo) => {
+        const { key } = e
+        navigate(`/${key}`)
+    }
+
+    const items = [
+        {
+            key: 'todo',
+            icon: <UserOutlined />,
+            label: 'todo',
+        },
+        {
+            key: 'jokelist',
+            icon: <VideoCameraOutlined />,
+            label: 'joke',
+        },
+        {
+            key: 'basketball',
+            icon: <UploadOutlined />,
+            label: 'basketball',
+        },
+    ]
 
     return (
         <LayoutWrapper>
@@ -50,24 +75,9 @@ const LayoutCom: React.FC = () => {
                     <Menu
                         theme="dark"
                         mode="inline"
-                        defaultSelectedKeys={['1']}
-                        items={[
-                            {
-                                key: '1',
-                                icon: <UserOutlined />,
-                                label: 'yumu',
-                            },
-                            {
-                                key: '2',
-                                icon: <VideoCameraOutlined />,
-                                label: 'joke',
-                            },
-                            {
-                                key: '3',
-                                icon: <UploadOutlined />,
-                                label: 'basketball',
-                            },
-                        ]}
+                        onClick={menuClick}
+                        defaultSelectedKeys={['yumu']}
+                        items={items}
                     />
                 </Sider>
                 <Layout className="site-layout">
@@ -91,7 +101,7 @@ const LayoutCom: React.FC = () => {
                             minHeight: 280,
                         }}
                     >
-                        Content
+                        <Outlet />
                     </Content>
                 </Layout>
             </Layout>

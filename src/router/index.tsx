@@ -9,7 +9,7 @@ const RouterCom:FC = ():ReactElement => (
         <Routes>
             <Route path="/" element={<App />}>
                 <Route path="/jokelist" element={<JokeList />}></Route>
-            </Route>
+            </Route> 
             <Route path="/login" element={<Login />}></Route>
         </Routes>
     </Router>
