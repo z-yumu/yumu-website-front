@@ -76,7 +76,7 @@ const LayoutCom: React.FC = () => {
                         theme="dark"
                         mode="inline"
                         onClick={menuClick}
-                        defaultSelectedKeys={['yumu']}
+                        defaultSelectedKeys={['jokelist']}
                         items={items}
                     />
                 </Sider>
