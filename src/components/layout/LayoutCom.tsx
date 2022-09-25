@@ -1,9 +1,9 @@
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    UploadOutlined,
     UserOutlined,
-    VideoCameraOutlined,
+    EditFilled,
+    SnippetsFilled
 } from '@ant-design/icons'
 import { Layout, Menu } from 'antd'
 import { MenuInfo } from 'rc-menu/lib/interface'
@@ -56,14 +56,14 @@ const LayoutCom: React.FC = () => {
             label: 'todo',
         },
         {
-            key: 'jokelist',
-            icon: <VideoCameraOutlined />,
+            key: 'joke-edit',
+            icon: <EditFilled />,
             label: 'joke',
         },
         {
-            key: 'basketball',
-            icon: <UploadOutlined />,
-            label: 'basketball',
+            key: 'joke-list',
+            icon: <SnippetsFilled />,
+            label: 'joke-list',
         },
     ]
 
@@ -76,7 +76,7 @@ const LayoutCom: React.FC = () => {
                         theme="dark"
                         mode="inline"
                         onClick={menuClick}
-                        defaultSelectedKeys={['jokelist']}
+                        defaultSelectedKeys={['joke-edit']}
                         items={items}
                     />
                 </Sider>
