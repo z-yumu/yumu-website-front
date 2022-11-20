@@ -3,21 +3,23 @@ import React, { FC, ReactElement, useState } from 'react'
 import { LoginWrapper } from './css/LoginWrapper'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
+import { loginApi } from '../../apis/user'
 
-interface IUser {
-    username: string
-    password: string
+export interface IUser {
+    account: string
+    pwd: string
 }
 
 const Login: FC = (): ReactElement => {
     const navigate = useNavigate()
     const [isModalVisible, setIsModalVisible] = useState(false)
-    const onFinish = (value: IUser) => {
-        console.log(value, 'value')
-        navigate('/')
+    const onFinish = async (value: IUser) => {
+        const res = await loginApi(value)
+        console.log(res,'--------------->')
+        // navigate('/')
     }
     return (
-        <LoginWrapper color="red">
+        <LoginWrapper>
             <div className="login">
                 <Form
                     name="normal_login"
@@ -26,11 +28,11 @@ const Login: FC = (): ReactElement => {
                     onFinish={onFinish}
                 >
                     <Form.Item
-                        name="username"
+                        name="account"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your Username!',
+                                message: 'Please input your account!',
                             },
                         ]}
                     >
@@ -42,7 +44,7 @@ const Login: FC = (): ReactElement => {
                         />
                     </Form.Item>
                     <Form.Item
-                        name="password"
+                        name="pwd"
                         rules={[
                             {
                                 required: true,
